@@ -91,6 +91,7 @@ fn main() {
         if pkg_config::Config::new()
             .statik(feature_enabled("static"))
             .probe("openblas")
+            .inspect_err(|e| eprintln!("PKG_CONFIG err: {e:?}"))
             .is_ok()
         {
             return;
